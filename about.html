@@ -1,0 +1,1838 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GreenHarvest | Organic Foods & Eco-Friendly Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #4CAF50;
+            --secondary: #FF9800;
+            --dark: #333;
+            --light: #f9f9f9;
+            --accent: #8BC34A;
+            --text: #555;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h1, h2, h3, h4 {
+            color: var(--dark);
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            line-height: 1.2;
+        }
+        
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--primary);
+        }
+        
+        h3 {
+            font-size: 1.8rem;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            background: #3e8e41;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .btn-secondary {
+            background: var(--secondary);
+        }
+        
+        .btn-secondary:hover {
+            background: #e68a00;
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 30px;
+        }
+        
+        nav ul li a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+        
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 0;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 3.5rem;
+            animation: fadeInUp 1s ease;
+        }
+        
+        .hero p {
+            color: #eee;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+        
+        .hero-btns {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            animation: fadeInUp 1s ease 0.4s forwards;
+            opacity: 0;
+        }
+        
+        /* About Section */
+        .about {
+            background-color: white;
+        }
+        
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+        
+        .about-text {
+            flex: 1;
+        }
+        
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .about-image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+        
+        /* Products Section */
+        .products {
+            background-color: var(--light);
+        }
+        
+        .product-categories {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .category-btn {
+            padding: 10px 25px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .category-btn.active, .category-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-info h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .product-info p {
+            margin-bottom: 15px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+        
+        .product-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+        
+        .price {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        /* Cart Modal */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            max-width: 400px;
+            height: 100%;
+            background: white;
+            box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+            z-index: 2000;
+            overflow-y: auto;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .cart-modal.open {
+            display: block;
+            transform: translateX(0);
+        }
+        
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .cart-items {
+            padding: 20px;
+        }
+        
+        .cart-item {
+            display: flex;
+            margin-bottom: 20px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .cart-item-img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+        
+        .cart-item-details {
+            flex: 1;
+        }
+        
+        .cart-item-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .cart-item-price {
+            color: var(--primary);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+        }
+        
+        .quantity-btn {
+            width: 25px;
+            height: 25px;
+            background: #f0f0f0;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .quantity-input {
+            width: 40px;
+            text-align: center;
+            margin: 0 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 5px;
+        }
+        
+        .remove-item {
+            background: none;
+            border: none;
+            color: #ff4757;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        
+        .cart-total {
+            padding: 20px;
+            border-top: 1px solid #eee;
+            text-align: right;
+        }
+        
+        .total-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .empty-cart {
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .empty-cart i {
+            font-size: 3rem;
+            color: #ddd;
+            margin-bottom: 20px;
+        }
+        
+        .cart-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1500;
+        }
+        
+        .cart-overlay.active {
+            display: block;
+        }
+        
+        .cart-icon {
+            position: relative;
+            margin-left: 20px;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            background: var(--secondary);
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+        }
+        
+        /* Checkout Modal */
+        .checkout-modal {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 90%;
+            max-width: 500px;
+            background: white;
+            border-radius: 10px;
+            z-index: 2000;
+            padding: 30px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+        }
+        
+        .checkout-modal.open {
+            display: block;
+        }
+        
+        .checkout-header {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        
+        .checkout-form .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .checkout-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
+        
+        .checkout-form input, 
+        .checkout-form textarea {
+            width: 100%;
+            padding: 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .checkout-btns {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        /* Features Section */
+        .features {
+            background-color: white;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .feature-card {
+            text-align: center;
+            padding: 30px;
+            border-radius: 10px;
+            background: var(--light);
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1498837167922-ddd27525d352?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+        }
+        
+        .testimonials h2 {
+            color: white;
+        }
+        
+        .testimonials h2::after {
+            background: var(--secondary);
+        }
+        
+        .testimonial-slider {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .testimonial {
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            display: none;
+        }
+        
+        .testimonial.active {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+        
+        .testimonial-role {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .testimonial-nav {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 10px;
+        }
+        
+        .testimonial-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .testimonial-dot.active {
+            background: var(--secondary);
+        }
+        
+        /* Contact Section */
+        .contact {
+            background-color: white;
+        }
+        
+        .contact-container {
+            display: flex;
+            gap: 50px;
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .contact-info h3 {
+            margin-bottom: 30px;
+        }
+        
+        .contact-details {
+            margin-bottom: 30px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+        
+        .contact-icon {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+        
+        .contact-form {
+            flex: 1;
+            background: var(--light);
+            padding: 30px;
+            border-radius: 10px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        /* Newsletter Section */
+        .newsletter {
+            background-color: var(--primary);
+            color: white;
+            padding: 60px 0;
+        }
+        
+        .newsletter h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .newsletter h2::after {
+            background: var(--secondary);
+        }
+        
+        .newsletter p {
+            max-width: 600px;
+            margin: 0 auto 30px;
+            text-align: center;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: 50px 0 0 50px;
+            font-size: 1rem;
+        }
+        
+        .newsletter-input:focus {
+            outline: none;
+        }
+        
+        .newsletter-btn {
+            padding: 15px 30px;
+            background: var(--secondary);
+            color: white;
+            border: none;
+            border-radius: 0 50px 50px 0;
+            cursor: pointer;
+            font-weight: 600;
+            transition: background 0.3s;
+        }
+        
+        .newsletter-btn:hover {
+            background: #e68a00;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: #ddd;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-col h3 {
+            color: white;
+            margin-bottom: 25px;
+            font-size: 1.3rem;
+        }
+        
+        .footer-links li {
+            margin-bottom: 15px;
+            list-style: none;
+        }
+        
+        .footer-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: white;
+            transition: all 0.3s;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            font-size: 0.9rem;
+        }
+        
+        /* Success Message */
+        .success-message {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+            z-index: 3000;
+            text-align: center;
+            max-width: 500px;
+            width: 90%;
+        }
+        
+        .success-message i {
+            font-size: 4rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .success-message h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .contact-container {
+                flex-direction: column;
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 20px 0;
+                box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+            }
+            
+            nav ul.show {
+                display: flex;
+            }
+            
+            nav ul li {
+                margin: 0;
+                padding: 10px 20px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-btns {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .hero-btns .btn {
+                width: 80%;
+                margin-bottom: 15px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            h2 {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-input {
+                border-radius: 50px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-btn {
+                border-radius: 50px;
+            }
+            
+            .cart-modal {
+                width: 100%;
+                max-width: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="#" class="logo">
+                <i class="fas fa-leaf"></i>
+                NourishHub
+            </a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="index.html">Back To Donour Page</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#products">Products</a></li>
+                    <li><a href="#features">Why Us</a></li>
+                    <li><a href="#testimonials">Testimonials</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li>
+                        <a href="#" class="cart-icon" id="cartIcon">
+                            <i class="fas fa-shopping-cart"></i>
+                            <span class="cart-count" id="cartCount">0</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Cart Modal -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-modal" id="cartModal">
+        <div class="cart-header">
+            <h3 class="cart-title">Your Cart</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be added here dynamically -->
+            <div class="empty-cart">
+                <i class="fas fa-shopping-cart"></i>
+                <p>Your cart is empty</p>
+            </div>
+        </div>
+        <div class="cart-total" id="cartTotal" style="display: none;">
+            <h4>Total: <span class="total-price" id="totalPrice">$0.00</span></h4>
+            <button class="btn checkout-btn" id="checkoutBtn">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="checkout-modal" id="checkoutModal">
+        <div class="checkout-header">
+            <h3>Complete Your Order</h3>
+            <p>Please fill in your details to complete your purchase</p>
+        </div>
+        <form class="checkout-form" id="checkoutForm">
+            <div class="form-group">
+                <label for="checkout-name">Full Name</label>
+                <input type="text" id="checkout-name" required>
+            </div>
+            <div class="form-group">
+                <label for="checkout-email">Email Address</label>
+                <input type="email" id="checkout-email" required>
+            </div>
+            <div class="form-group">
+                <label for="checkout-phone">Phone Number</label>
+                <input type="tel" id="checkout-phone" required>
+            </div>
+            <div class="form-group">
+                <label for="checkout-address">Shipping Address</label>
+                <textarea id="checkout-address" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="checkout-notes">Order Notes (Optional)</label>
+                <textarea id="checkout-notes"></textarea>
+            </div>
+            <div class="checkout-btns">
+                <button type="button" class="btn btn-secondary" id="cancelCheckout">Cancel</button>
+                <button type="submit" class="btn">Place Order</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Success Message -->
+    <div class="success-message" id="successMessage">
+        <i class="fas fa-check-circle"></i>
+        <h3>Order Placed Successfully!</h3>
+        <p>Thank you for your purchase. Your order details have been sent to your email.</p>
+        <button class="btn" id="closeSuccess">Continue Shopping</button>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Organic Foods & Eco-Friendly Living</h1>
+                <p>Discover our premium selection of organic fruits, vegetables, bioplastic covers, and aromatic incense sticks. Sustainable products for a healthier you and a greener planet.</p>
+                <div class="hero-btns">
+                    <a href="#products" class="btn">Shop Now</a>
+                    <a href="#about" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="container">
+            <h2>About NourishHub</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Clossing The Loop</h3>
+                    <p>NourishHub is a social enterprise dedicated to tackling two pressing issues in India: food waste and unemployment. It operates through a smart, digital platform that connects food donors—such as restaurants, supermarkets, and households—with non-profit organizations and communities in need. The goal is to recover surplus, edible food and redirect it to the underprivileged, thereby reducing hunger and preventing unnecessary waste.</p>
+                    <a href="#products" class="btn">Explore Our Products</a>
+                </div>
+                <div class="about-image">
+                    <img src="https://images.unsplash.com/photo-1606787366850-de6330128bfc?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Organic farm">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2>Our Products</h2>
+            <div class="product-categories">
+                <button class="category-btn active" data-category="all">All Products</button>
+                <button class="category-btn" data-category="fruits">Fresh Fruits</button>
+                <button class="category-btn" data-category="vegetables">Vegetables</button>
+                <button class="category-btn" data-category="bioplastic">Bioplastic Covers</button>
+                <button class="category-btn" data-category="incense">Incense Sticks</button>
+            </div>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card" data-category="fruits">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Organic Apples">
+                    </div>
+                    <div class="product-info">
+                        <h3>Organic Apples</h3>
+                        <p>Crisp, juicy apples grown without synthetic pesticides. Packed with fiber and antioxidants.</p>
+                        <div class="product-price">
+                            <span class="price">49/kg</span>
+                            <button class="btn add-to-cart" data-id="1" data-name="Organic Apples" data-price="2.99" data-image="https://images.unsplash.com/photo-1568702846914-96b305d2aaeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card" data-category="vegetables">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1518977676601-b53f82aba655?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Organic Carrots">
+                    </div>
+                    <div class="product-info">
+                        <h3>Pottato</h3>
+                        <p>Sweet, crunchy carrots rich in beta-carotene. Perfect for snacking or cooking.</p>
+                        <div class="product-price">
+                            <span class="price">30/kg</span>
+                            <button class="btn add-to-cart" data-id="2" data-name="Organic Carrots" data-price="1.99" data-image="https://images.unsplash.com/photo-1518977676601-b53f82aba655?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card" data-category="bioplastic">
+                    <div class="product-image">
+                        <img src="data:image/jpeg;base64,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">
+                    </div>
+                    <div class="product-info">
+                        <h3>Bioplastic Food Covers</h3>
+                        <p>Set of 10 biodegradable food covers made from plant-based materials. 100% compostable.</p>
+                        <div class="product-price">
+                            <span class="price">15</span>
+                            <button class="btn add-to-cart" data-id="3" data-name="Bioplastic Food Covers" data-price="8.99" data-image="https://images.unsplash.com/photo-1587353194823-1225d8760ae9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                
+                <!-- Product 5 -->
+                <div class="product-card" data-category="fruits">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1550258987-190a2d41a8ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80" alt="Organic Bananas">
+                    </div>
+                    <div class="product-info">
+                        <h3> pineapple</h3>
+                        <p>Naturally sweet pineapple grown without chemical fertilizers. Rich in potassium and natural energy.</p>
+                        <div class="product-price">
+                            <span class="price">34/kg</span>
+                            <button class="btn add-to-cart" data-id="5" data-name="Organic Bananas" data-price="0.79" data-image="https://images.unsplash.com/photo-1550258987-190a2d41a8ba?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1374&q=80">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 6 -->
+                <div class="product-card" data-category="vegetables">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Organic Spinach">
+                    </div>
+                    <div class="product-info">
+                        <h3>carrot</h3>
+                        <p>Tender, nutrient-packed carrot. Excellent source of iron, vitamins A and C.</p>
+                        <div class="product-price">
+                            <span class="price">32/kg</span>
+                            <button class="btn add-to-cart" data-id="6" data-name="Organic Spinach" data-price="3.49" data-image="https://images.unsplash.com/photo-1598170845058-32b9d6a5da37?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Product 7 -->
+                <div class="product-card" data-category="bioplastic">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Bioplastic Produce Bags">
+                    </div>
+                    <div class="product-info">
+                        <h3>Bioplastic Produce Bags</h3>
+                        <p>Set of 5 reusable produce bags made from cornstarch-based bioplastic. Lightweight and durable.</p>
+                        <div class="product-price">
+                            <span class="price">20</span>
+                            <button class="btn add-to-cart" data-id="7" data-name="Bioplastic Produce Bags" data-price="6.99" data-image="https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80">Add to Cart</button>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2>Why Choose NourishHub</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <h3>100% Organic</h3>
+                    <p>All our produce is certified organic, grown without synthetic pesticides or GMOs, ensuring the highest quality and nutritional value.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-recycle"></i>
+                    </div>
+                    <h3>Eco-Friendly</h3>
+                    <p>Our bioplastic products are made from renewable plant resources and are fully biodegradable, helping reduce plastic pollution.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-truck"></i>
+                    </div>
+                    <h3>Fast Delivery</h3>
+                    <p>We deliver fresh to your doorstep within 24-48 hours of harvest, ensuring maximum freshness and quality.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-hand-holding-heart"></i>
+                    </div>
+                    <h3>Ethical Sourcing</h3>
+                    <p>We work directly with small-scale farmers and artisans, ensuring fair prices and sustainable livelihoods.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-award"></i>
+                    </div>
+                    <h3>Premium Quality</h3>
+                    <p>Our incense sticks are handcrafted using traditional methods with pure, natural ingredients for authentic aromas.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-smile"></i>
+                    </div>
+                    <h3>Satisfaction Guaranteed</h3>
+                    <p>If you're not completely satisfied with your purchase, we'll make it right with our 100% money-back guarantee.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonial-slider">
+                <!-- Testimonial 1 -->
+                <div class="testimonial active">
+                    <p class="testimonial-text">"NourishHub's organic fruits and vegetables are consistently fresh and flavorful. I can taste the difference compared to conventional produce. Their bioplastic covers are also a game-changer for reducing waste in my kitchen."</p>
+                    <h4 class="testimonial-author">Sarah Johnson</h4>
+                    <p class="testimonial-role">Health Coach, Portland</p>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial">
+                    <p class="testimonial-text">"As a restaurant owner, I rely on GreenHarvest for premium organic ingredients. Their delivery is always prompt, and the quality is exceptional. My customers can taste the difference in every dish."</p>
+                    <h4 class="testimonial-author">Michael Chen</h4>
+                    <p class="testimonial-role">Chef & Restaurant Owner, Seattle</p>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial">
+                    <p class="testimonial-text">"The sandalwood incense sticks from GreenHarvest create such a peaceful atmosphere in my yoga studio. They burn evenly and have a beautiful, authentic fragrance without any synthetic smell."</p>
+                    <h4 class="testimonial-author">Priya Patel</h4>
+                    <p class="testimonial-role">Yoga Instructor, San Francisco</p>
+                </div>
+                
+                <div class="testimonial-nav">
+                    <div class="testimonial-dot active" data-index="0"></div>
+                    <div class="testimonial-dot" data-index="1"></div>
+                    <div class="testimonial-dot" data-index="2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Get In Touch</h3>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <h4>Address</h4>
+                                <p>123 Green Valley Road, Eco Park, California 90210</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+1 (800) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <h4>Email</h4>
+                                <p>info@greenharvest.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4>Hours</h4>
+                                <p>Monday - Friday: 9am - 6pm<br>Saturday: 10am - 4pm<br>Sunday: Closed</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <input type="text" id="subject" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" class="form-control" required></textarea>
+                        </div>
+                        <button type="submit" class="btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Join Our Green Community</h2>
+            <p>Subscribe to our newsletter for exclusive offers, seasonal recipes, and tips on sustainable living. Get 10% off your first order!</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address" class="newsletter-input" required>
+                <button type="submit" class="newsletter-btn">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-col">
+                    <h3>GreenHarvest</h3>
+                    <p>Committed to providing organic, sustainable products that nourish your body and protect our planet.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#products">Products</a></li>
+                        <li><a href="#features">Why Choose Us</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Products</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">Organic Fruits</a></li>
+                        <li><a href="#">Organic Vegetables</a></li>
+                        <li><a href="#">Bioplastic Covers</a></li>
+                        <li><a href="#">Incense Sticks</a></li>
+                        <li><a href="#">Seasonal Specials</a></li>
+                        <li><a href="#">Gift Boxes</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Shipping Policy</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Track Order</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 GreenHarvest. All Rights Reserved. Designed with <i class="fas fa-heart" style="color: #ff4757;"></i> for our planet.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('show');
+            mobileMenuBtn.innerHTML = navMenu.classList.contains('show') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (navMenu.classList.contains('show')) {
+                    navMenu.classList.remove('show');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+        
+        // Product Category Filter
+        const categoryBtns = document.querySelectorAll('.category-btn');
+        const productCards = document.querySelectorAll('.product-card');
+        
+        categoryBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remove active class from all buttons
+                categoryBtns.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                btn.classList.add('active');
+                
+                const category = btn.dataset.category;
+                
+                // Filter products
+                productCards.forEach(card => {
+                    if (category === 'all' || card.dataset.category === category) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Testimonial Slider
+        const testimonials = document.querySelectorAll('.testimonial');
+        const testimonialDots = document.querySelectorAll('.testimonial-dot');
+        let currentTestimonial = 0;
+        
+        function showTestimonial(index) {
+            testimonials.forEach(testimonial => testimonial.classList.remove('active'));
+            testimonialDots.forEach(dot => dot.classList.remove('active'));
+            
+            testimonials[index].classList.add('active');
+            testimonialDots[index].classList.add('active');
+            currentTestimonial = index;
+        }
+        
+        testimonialDots.forEach(dot => {
+            dot.addEventListener('click', () => {
+                showTestimonial(parseInt(dot.dataset.index));
+            });
+        });
+        
+        // Auto-rotate testimonials
+        setInterval(() => {
+            let nextTestimonial = (currentTestimonial + 1) % testimonials.length;
+            showTestimonial(nextTestimonial);
+        }, 5000);
+        
+        // Form Submission
+        const contactForm = document.getElementById('contactForm');
+        const newsletterForm = document.querySelector('.newsletter-form');
+        
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            contactForm.reset();
+        });
+        
+        newsletterForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you for subscribing to our newsletter! Check your email for your 10% discount code.');
+            newsletterForm.reset();
+        });
+        
+        // Cart Functionality
+        const cartIcon = document.getElementById('cartIcon');
+        const cartModal = document.getElementById('cartModal');
+        const cartOverlay = document.getElementById('cartOverlay');
+        const closeCart = document.getElementById('closeCart');
+        const cartItems = document.getElementById('cartItems');
+        const cartCount = document.getElementById('cartCount');
+        const cartTotal = document.getElementById('cartTotal');
+        const totalPrice = document.getElementById('totalPrice');
+        const checkoutBtn = document.getElementById('checkoutBtn');
+        const checkoutModal = document.getElementById('checkoutModal');
+        const cancelCheckout = document.getElementById('cancelCheckout');
+        const checkoutForm = document.getElementById('checkoutForm');
+        const successMessage = document.getElementById('successMessage');
+        const closeSuccess = document.getElementById('closeSuccess');
+        
+        let cart = [];
+        
+        // Open/Close Cart
+        cartIcon.addEventListener('click', () => {
+            cartModal.classList.add('open');
+            cartOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+        
+        closeCart.addEventListener('click', () => {
+            cartModal.classList.remove('open');
+            cartOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        cartOverlay.addEventListener('click', () => {
+            cartModal.classList.remove('open');
+            cartOverlay.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+        
+        // Add to Cart
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', () => {
+                const product = {
+                    id: button.dataset.id,
+                    name: button.dataset.name,
+                    price: parseFloat(button.dataset.price),
+                    image: button.dataset.image,
+                    quantity: 1
+                };
+                
+                // Check if product already in cart
+                const existingItem = cart.find(item => item.id === product.id);
+                
+                if (existingItem) {
+                    existingItem.quantity += 1;
+                } else {
+                    cart.push(product);
+                }
+                
+                updateCart();
+                
+                // Show cart modal when adding first item
+                if (cart.length === 1) {
+                    cartModal.classList.add('open');
+                    cartOverlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                }
+            });
+        });
+        
+        // Update Cart
+        function updateCart() {
+            // Update cart count
+            const count = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = count;
+            
+            // Update cart items
+            if (cart.length === 0) {
+                cartItems.innerHTML = `
+                    <div class="empty-cart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <p>Your cart is empty</p>
+                    </div>
+                `;
+                cartTotal.style.display = 'none';
+            } else {
+                cartItems.innerHTML = '';
+                cart.forEach(item => {
+                    const cartItem = document.createElement('div');
+                    cartItem.className = 'cart-item';
+                    cartItem.innerHTML = `
+                        <img src="${item.image}" alt="${item.name}" class="cart-item-img">
+                        <div class="cart-item-details">
+                            <h4 class="cart-item-title">${item.name}</h4>
+                            <p class="cart-item-price">$${item.price.toFixed(2)}</p>
+                            <div class="cart-item-quantity">
+                                <button class="quantity-btn decrease-quantity" data-id="${item.id}">-</button>
+                                <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-id="${item.id}">
+                                <button class="quantity-btn increase-quantity" data-id="${item.id}">+</button>
+                                <button class="remove-item" data-id="${item.id}"><i class="fas fa-trash"></i></button>
+                            </div>
+                        </div>
+                    `;
+                    cartItems.appendChild(cartItem);
+                });
+                
+                // Calculate total
+                const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+                totalPrice.textContent = `$${total.toFixed(2)}`;
+                cartTotal.style.display = 'block';
+            }
+            
+            // Add event listeners to quantity buttons
+            document.querySelectorAll('.decrease-quantity').forEach(button => {
+                button.addEventListener('click', () => {
+                    const id = button.dataset.id;
+                    const item = cart.find(item => item.id === id);
+                    
+                    if (item.quantity > 1) {
+                        item.quantity -= 1;
+                    } else {
+                        cart = cart.filter(item => item.id !== id);
+                    }
+                    
+                    updateCart();
+                });
+            });
+            
+            document.querySelectorAll('.increase-quantity').forEach(button => {
+                button.addEventListener('click', () => {
+                    const id = button.dataset.id;
+                    const item = cart.find(item => item.id === id);
+                    item.quantity += 1;
+                    updateCart();
+                });
+            });
+            
+            document.querySelectorAll('.quantity-input').forEach(input => {
+                input.addEventListener('change', () => {
+                    const id = input.dataset.id;
+                    const item = cart.find(item => item.id === id);
+                    const newQuantity = parseInt(input.value);
+                    
+                    if (newQuantity > 0) {
+                        item.quantity = newQuantity;
+                    } else {
+                        cart = cart.filter(item => item.id !== id);
+                    }
+                    
+                    updateCart();
+                });
+            });
+            
+            document.querySelectorAll('.remove-item').forEach(button => {
+                button.addEventListener('click', () => {
+                    const id = button.dataset.id;
+                    cart = cart.filter(item => item.id !== id);
+                    updateCart();
+                });
+            });
+        }
+        
+        // Checkout Process
+        checkoutBtn.addEventListener('click', () => {
+            cartModal.classList.remove('open');
+            checkoutModal.classList.add('open');
+        });
+        
+        cancelCheckout.addEventListener('click', () => {
+            checkoutModal.classList.remove('open');
+            cartModal.classList.add('open');
+        });
+        
+        checkoutForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Get form data
+            const name = document.getElementById('checkout-name').value;
+            const email = document.getElementById('checkout-email').value;
+            const phone = document.getElementById('checkout-phone').value;
+            const address = document.getElementById('checkout-address').value;
+            const notes = document.getElementById('checkout-notes').value;
+            
+            // Calculate total
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            // Create order summary
+            let orderSummary = '<h3>Order Summary</h3><ul>';
+            cart.forEach(item => {
+                orderSummary += `<li>${item.name} - ${item.quantity} x $${item.price.toFixed(2)} = $${(item.quantity * item.price).toFixed(2)}</li>`;
+            });
+            orderSummary += `</ul><p><strong>Total: $${total.toFixed(2)}</strong></p>`;
+            
+            // Create customer details
+            const customerDetails = `
+                <h3>Customer Details</h3>
+                <p><strong>Name:</strong> ${name}</p>
+                <p><strong>Email:</strong> ${email}</p>
+                <p><strong>Phone:</strong> ${phone}</p>
+                <p><strong>Address:</strong> ${address}</p>
+                ${notes ? `<p><strong>Notes:</strong> ${notes}</p>` : ''}
+            `;
+            
+            // In a real application, you would send this data to your server
+            // For this demo, we'll simulate sending an email by logging to console
+            console.log('Order Details:', {
+                customer: { name, email, phone, address, notes },
+                items: cart,
+                total: total.toFixed(2)
+            });
+            
+            // Here's where you would normally send the email using a server-side script
+            // For demonstration, we'll use EmailJS (you would need to set this up with your own account)
+            // This is just a placeholder to show how it might work
+            
+            // Show success message
+            checkoutModal.classList.remove('open');
+            cartOverlay.classList.remove('active');
+            successMessage.style.display = 'block';
+            
+            // Clear cart
+            cart = [];
+            updateCart();
+            checkoutForm.reset();
+        });
+        
+        closeSuccess.addEventListener('click', () => {
+            successMessage.style.display = 'none';
+            document.body.style.overflow = '';
+        });
+        
+        // Scroll Animation
+        const animateOnScroll = () => {
+            const elements = document.querySelectorAll('.about-content, .feature-card, .product-card');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                
+                if (elementPosition < screenPosition) {
+                    element.style.opacity = '1';
+                    element.style.transform = 'translateY(0)';
+                }
+            });
+        };
+        
+        // Set initial state for animation
+        document.querySelectorAll('.about-content, .feature-card, .product-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        });
+        
+        window.addEventListener('scroll', animateOnScroll);
+        window.addEventListener('load', animateOnScroll);
+
+        emailjs.send('your_service_id', 'your_template_id', {
+    customer_name: name,
+    customer_email: email,
+    order_details: orderSummary,
+    total: total.toFixed(2)
+     }).then(() => {
+    // Show success message
+}, (error) => {
+    console.error('Failed to send email:', error);
+});
+    </script>
+</body>
+</html>
